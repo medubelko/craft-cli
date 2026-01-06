@@ -606,6 +606,8 @@ func = globals().get(name)
 if func is None:
     print(f"ERROR: function {name!r} not found")
     sys.exit()
+# https://github.com/astral-sh/ty/issues/690
+assert func is not None  # noqa: S101, type narrowing
 
 if int(sys.argv[1]) != 29:  # noqa: PLR2004, magic value
     emit.init(EmitterMode.BRIEF, "examples", "Greetings earthlings")
